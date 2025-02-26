@@ -3,11 +3,6 @@ import random
 import matplotlib.pyplot as plt
 list1 = []
 list2 = []
-list3 = []
-list4 = []
-list5 = []
-list6 = []
-list7 = []
 
 
 def merge(left, right):
@@ -43,42 +38,28 @@ def insertionsort(s):
             j = j - 1
         s[j+1] = val
 
-for i in range(10):
-    list1.append(random.randint(1, 10))
-for i in range(50):
-    list2.append(random.randint(1, 50))
-for i in range(100):
-    list3.append(random.randint(1, 100))
-for i in range(200):
-    list4.append(random.randint(1, 200))
-for i in range(300):
-    list5.append(random.randint(1, 300))
-
-l1 = list1.copy()
-l2 = list2.copy()
-l3 = list3.copy()
-l4 = list4.copy()
-l5 = list5.copy()
-
-
 line1 = []
 line2 = []
-y = [10,50,100,200,300]
-for i in (l1, l2, l3, l4, l5):
+y = []
+count = 1
+for i in range(0,300,5):
+    y.append(i)
+    for j in range(i):
+        list1.append(random.randint(0,100000))
     start = timeit.default_timer()
-    insertionsort(i.copy())
+    insertionsort(list1.copy())
     line1.append(timeit.default_timer() - start)
     start = timeit.default_timer()
-    mergesort(i.copy())
+    mergesort(list1.copy())
     line2.append(timeit.default_timer() - start)
-plt.scatter(line1,y, label = "Insertion")
-plt.scatter(line2,y, label = "Merge")
+    list1 = []
+    if line1[int(i/5)] < line2[int(i/5)]:
+        count = i
+plt.plot(line1,y, label = "Insertion")
+plt.plot(line2,y, label = "Merge")
+plt.axhline(y = count)
 plt.xlabel("time in milliseconds")
 plt.ylabel("amount of entries")
 plt.title("Merge vs Insertion sort time difference")
 plt.legend()
 plt.show()
-for i in range(5):
-    print(y[i])
-    print("Insertion:",line1[i])
-    print("Merge:",line2[i])
