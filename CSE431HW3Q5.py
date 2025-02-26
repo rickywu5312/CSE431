@@ -80,5 +80,5 @@ plt.legend()
 plt.show()
 for i in range(5):
     print(y[i])
-    print("Insertion:",line1[0])
-    print("Merge:",line2[0])
+    print("Insertion:",line1[i])
+    print("Merge:",line2[i])
