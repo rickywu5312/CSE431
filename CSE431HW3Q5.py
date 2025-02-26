@@ -78,3 +78,7 @@ plt.ylabel("amount of entries")
 plt.title("Merge vs Insertion sort time difference")
 plt.legend()
 plt.show()
+for i in range(5):
+    print(y[i])
+    print("Insertion:",line1[0])
+    print("Merge:",line2[0])
